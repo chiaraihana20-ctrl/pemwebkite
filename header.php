@@ -72,8 +72,9 @@ include 'koneksi.php';
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="index.php">
-                <i class="bi bi-water me-2 fs-3 text-primary"></i> Sharky Villa
+           <a class="navbar-brand d-flex align-items-center text-decoration-none" href="index.php">
+             <img src="pict/ping.png" alt="Logo Sharky Villa" width="40" height="40" class="me-2 rounded-circle object-fit-cover"> 
+             <span class="fw-bold" style="color: #1E3A8A;">Sharky Villa</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
