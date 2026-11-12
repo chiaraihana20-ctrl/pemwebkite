@@ -69,7 +69,6 @@ include 'koneksi.php';
 </head>
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-custom">
         <div class="container">
            <a class="navbar-brand d-flex align-items-center text-decoration-none" href="index.php">
