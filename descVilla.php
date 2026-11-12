@@ -58,43 +58,13 @@ $gambar = isset($gambarVilla[$id]) ? $gambarVilla[$id] : 'biru.jpg';
 <body style="background-color: #0b1f3a">
 
     <!-- NAVBAR -->
-    <section>
-        <div class="container">
+<?php
+include 'header.php';
 
-            <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+$query_villa = "SELECT * FROM villa LIMIT 4";
+$result_villa = mysqli_query($conn, $query_villa);
+?>
 
-                <div class="col-md-3 mb-2 mb-md-0">
-                    <h4 class="text-light fw-bold mb-0">
-                        VILLA PARADISE
-                    </h4>
-                </div>
-
-                <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-
-                    <li>
-                        <a href="index.php" class="nav-link px-2 text-warning fw-bold">
-                            Beranda
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="villa.html" class="nav-link px-2 text-warning">
-                            Villa
-                        </a>
-                    </li>
-
-                </ul>
-
-                <div class="col-md-3 text-end">
-                    <span class="text-light">
-                        Welcome to Villa Paradise
-                    </span>
-                </div>
-
-            </header>
-
-        </div>
-    </section>
 
 
     <!-- DETAIL VILLA -->
@@ -263,31 +233,9 @@ $gambar = isset($gambarVilla[$id]) ? $gambarVilla[$id] : 'biru.jpg';
 
 
     <!-- FOOTER -->
-    <section>
-
-        <div class="container py-4 border-top mt-5">
-
-            <div class="d-flex flex-wrap justify-content-between align-items-center">
-
-                <div class="col-md-4">
-
-                    <h5 class="text-warning fw-bold">
-                        VILLA PARADISE
-                    </h5>
-
-                </div>
-
-                <div class="col-md-4 text-end text-light">
-
-                    © 2026 Villa Paradise
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+    <?php 
+include 'footer.php'; 
+?>
 
 
     <script
