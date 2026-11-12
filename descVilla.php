@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 <?php
 error_reporting(E_ALL);
@@ -27,18 +26,8 @@ $prev = mysqli_fetch_assoc($queryPrev);
 // Mengambil villa berikutnya
 $queryNext = mysqli_query($conn, "SELECT id_villa FROM villa WHERE id_villa > $id ORDER BY id_villa ASC LIMIT 1");
 $next = mysqli_fetch_assoc($queryNext);
-
-// Daftar gambar villa
-$gambarVilla = [
-    1 => 'biru.jpg',
-    2 => 'ping.png',
-    3 => 'pink.jpg',
-    4 => 'pinkie.jpg',
-    5 => 'biru.jpg'
-];
-
-$gambar = isset($gambarVilla[$id]) ? $gambarVilla[$id] : 'biru.jpg';
 ?>
+
 
 
 <!DOCTYPE html>
@@ -114,11 +103,11 @@ $result_villa = mysqli_query($conn, $query_villa);
                         <!-- FOTO VILLA -->
                         <div class="col-lg-5 text-center p-4">
 
-                            <img
-                                src="pict/<?php echo htmlspecialchars($gambar); ?>"
-                                class="img-fluid rounded-3"
-                                style="max-height: 500px; object-fit: contain"
-                                alt="Foto Villa">
+                        <img
+                        src="../pict/<?php echo htmlspecialchars($data['gambar']); ?>"
+                        class="img-fluid rounded-3"
+                        style="max-height: 500px; object-fit: contain"
+                        alt="Foto Villa">
 
                         </div>
 
