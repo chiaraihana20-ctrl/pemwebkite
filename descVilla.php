@@ -46,7 +46,7 @@ $next = mysqli_fetch_assoc($queryNext);
         rel="stylesheet">
 </head>
 
-<body style="background-color: #0b1f3a">
+<body style="background-color: #D6EFFF">
 
     <!-- NAVBAR -->
 <?php
@@ -66,8 +66,11 @@ $result_villa = mysqli_query($conn, $query_villa);
             <!-- TOMBOL KEMBALI -->
             <div class="mb-4">
 
-                <a href="index.php" class="btn btn-warning fw-bold px-4 py-2">
-                    ← Kembali
+                <a href="index.php"
+                    class="btn fw-bold px-4 py-2"
+                    style="background-color: #FFB7C5; color: #ffffff; border: none;">
+
+                      ← Kembali
                 </a>
 
             </div>
@@ -97,54 +100,52 @@ $result_villa = mysqli_query($conn, $query_villa);
                 <!-- CARD DETAIL VILLA -->
                 <div
                     class="card border-0 rounded-4 overflow-hidden flex-grow-1"
-                    style="background-color: #1b3358; max-width: 1100px">
+                    style="background-color: #FFFFFF; max-width: 1100px">
 
-                    <div class="row g-0 align-items-center">
-
-
-                        <!-- FOTO VILLA -->
+                    <!-- FOTO VILLA -->
                         <div class="col-lg-5 text-center p-4">
 
-                        <img
-                        src="../pict/<?php echo htmlspecialchars($data['gambar']); ?>"
-                        class="img-fluid rounded-3"
-                        style="max-height: 500px; object-fit: contain"
-                        alt="Foto Villa">
+
+                            <img
+                                src="http://localhost/projek2/pict/<?php echo htmlspecialchars($data['gambar']); ?>"
+                                class="img-fluid rounded-3"
+                                style="max-height: 350px; object-fit: contain;"
+                                alt="Foto Villa">
 
                         </div>
 
 
                         <!-- INFORMASI VILLA -->
-                        <div class="col-lg-7 p-4 p-lg-5">
+                        <div class="col-lg-7 p-4 ">
 
-                            <span class="badge bg-warning text-dark px-4 py-2 mb-3">
+                            <div class="col-lg-7 p-4 p-lg-5">
 
-                                DETAIL VILLA
+                            <span class="btn fw-bold px-4 py-2 mt-2"
+                                    style="background-color: #FFB7C5; color: #ffffff; border: none;">
+
+                                     DETAIL VILLA
 
                             </span>
 
+                            </div>
+
 
                             <!-- NAMA VILLA -->
-                            <h1 class="display-5 fw-bold text-warning">
+                            <h1 class="display-5 fw-bold"
+                            style="color: #334E68;">
 
-                                <?php echo htmlspecialchars($data['nama_villa']); ?>
+                             <?php echo htmlspecialchars($data['nama_villa']); ?>
 
                             </h1>
 
 
-                            <!-- HARGA -->
-                            <h4 class="text-light fw-bold mt-3">
-
-                                <?php echo htmlspecialchars($data['harga']); ?>
-
+                           <h4 class="fw-bold mt-3" style="color: #334E68;">
+                            <?php echo htmlspecialchars($data['harga']); ?>
                             </h4>
 
-
                             <!-- DESKRIPSI -->
-                            <p class="lead text-light mt-4">
-
-                                <?php echo htmlspecialchars($data['deskripsi']); ?>
-
+                            <p class="lead mt-4" style="color: #334E68;">
+                             <?php echo htmlspecialchars($data['deskripsi']); ?>
                             </p>
 
 
@@ -154,26 +155,25 @@ $result_villa = mysqli_query($conn, $query_villa);
                             <!-- INFORMASI TAMBAHAN -->
                             <div class="row mt-4">
 
-                                <div class="col-6 mb-3">
+                             <div class="col-6 mb-3">
 
-                                    <h6 class="text-warning fw-bold">
+                                    <h6 class="fw-bold" style="color: #334E68;">
                                         👥 Kapasitas
                                     </h6>
 
-                                    <p class="text-light">
+                                    <p style="color: #334E68;">
                                         <?php echo htmlspecialchars($data['kapasitas']); ?>
                                     </p>
 
                                 </div>
 
-
                                 <div class="col-6 mb-3">
 
-                                    <h6 class="text-warning fw-bold">
+                                    <h6 class="fw-bold" style="color: #334E68;">
                                         🛏 Jumlah Kamar
                                     </h6>
 
-                                    <p class="text-light">
+                                    <p style="color: #334E68;">
                                         <?php echo htmlspecialchars($data['jumlah_kamar']); ?>
                                     </p>
 
@@ -181,11 +181,11 @@ $result_villa = mysqli_query($conn, $query_villa);
 
                             </div>
 
-
                             <!-- TOMBOL BOOKING -->
-                            <a
+                            <a 
                                 href="booking.php?id_villa=<?php echo $data['id_villa']; ?>"
-                                class="btn btn-warning fw-bold px-4 py-2 mt-2">
+                                class="btn fw-bold px-4 py-2 mt-2"
+                                style="background-color: #FFB7C5; color: #ffffff; border: none;">
 
                                 Pesan Sekarang
 

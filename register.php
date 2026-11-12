@@ -11,6 +11,7 @@ if (isset($_POST['register'])) {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
+<<<<<<< HEAD
     // Cek apakah email sudah terdaftar
     $stmt = mysqli_prepare($conn, "SELECT id FROM user WHERE email = ?");
     mysqli_stmt_bind_param($stmt, "s", $email);
@@ -19,12 +20,20 @@ if (isset($_POST['register'])) {
 
     if (mysqli_num_rows($cek_email) > 0) {
         $pesan = "Email sudah terdaftar! Silakan gunakan email lain.";
+=======
+    // Cek apakah email sudah terdaftar di database
+    $cek_email = mysqli_query($conn, "SELECT * FROM user WHERE email = '$email'");
+    
+    if (mysqli_num_rows($cek_email) > 0) {
+        $pesan = "Email sudah terdaftar! Silakan gunakan email lain atau masuk.";
+>>>>>>> da3856f762981100da866edd9e29ab2c204040e6
         $tipe_alert = "danger";
     } else {
 
         // Enkripsi password
         $password_hashed = password_hash($password, PASSWORD_DEFAULT);
 
+<<<<<<< HEAD
         // Simpan data pengguna
         $stmt_insert = mysqli_prepare(
             $conn,
@@ -48,10 +57,22 @@ if (isset($_POST['register'])) {
 
             // Masuk ke halaman utama
             header("Location: index.php");
+=======
+        // Simpan data ke tabel user
+        $query_insert = "INSERT INTO user (nama, email, password) VALUES ('$nama', '$email', '$password_hashed')";
+        
+        if (mysqli_query($conn, $query_insert)) {
+            // Redirect ke halaman login dengan membawa pesan sukses
+            header("Location: login.php?pesan=registrasi_berhasil");
+>>>>>>> da3856f762981100da866edd9e29ab2c204040e6
             exit;
 
         } else {
+<<<<<<< HEAD
             $pesan = "Registrasi gagal, silakan coba lagi.";
+=======
+            $pesan = "Registrasi gagal, silakan coba lagi: " . mysqli_error($conn);
+>>>>>>> da3856f762981100da866edd9e29ab2c204040e6
             $tipe_alert = "danger";
         }
     }
@@ -220,6 +241,7 @@ if (isset($_POST['register'])) {
                             </label>
 
                             <div class="input-group">
+<<<<<<< HEAD
 
                                 <span class="input-group-text bg-light border-end-0 rounded-start-3">
                                     <i class="bi bi-lock text-muted"></i>
@@ -277,10 +299,26 @@ if (isset($_POST['register'])) {
                     &copy; 2026 Sharky Villa
                 </p>
 
+=======
+                                <span class="input-group-text bg-light border-end-0 rounded-start-3"><i class="bi bi-lock text-muted"></i></span>
+                                <input type="password" name="password" class="form-control border-start-0 bg-light py-2" placeholder="••••••••" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" name="register" class="btn btn-pink w-100 py-2 shadow-sm fw-bold">Daftar Sekarang</button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <p class="small text-muted">Sudah punya akun? <a href="login.php" class="text-decoration-none fw-bold" style="color: #2563EB;">Masuk disini</a></p>
+                    </div>
+                </div>
+
+>>>>>>> da3856f762981100da866edd9e29ab2c204040e6
             </div>
         </div>
     </div>
 
+<<<<<<< HEAD
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
@@ -304,3 +342,9 @@ if (isset($_POST['register'])) {
 
 </body>
 </html>
+=======
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+>>>>>>> da3856f762981100da866edd9e29ab2c204040e6
