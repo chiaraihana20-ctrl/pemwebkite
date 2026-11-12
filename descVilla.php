@@ -1,4 +1,3 @@
-
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -18,6 +17,9 @@ if (!$data) {
     echo "Villa tidak ditemukan!";
     exit;
 }
+
+// Menentukan foto berdasarkan ID villa
+$gambar = "villa" . $id . ".jpg";
 
 // Mengambil villa sebelumnya
 $queryPrev = mysqli_query($conn, "SELECT id_villa FROM villa WHERE id_villa < $id ORDER BY id_villa DESC LIMIT 1");
