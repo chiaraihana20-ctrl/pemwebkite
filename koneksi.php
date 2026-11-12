@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$db   = "villa";
+$db   = "villa"; // Pastikan nama database di phpMyAdmin benar-benar 'villa'
 
 $conn = mysqli_connect($host, $user, $pass, $db);
 
