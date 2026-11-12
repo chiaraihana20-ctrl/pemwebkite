@@ -2,7 +2,7 @@
 session_start();
 include 'koneksi.php';
 
-// Jika user belum login, alihkan (redirect) kembali ke halaman login.php
+// Jika user belum login, alihkan kembali ke halaman login.php
 if (!isset($_SESSION['id_user'])) {
     header("Location: login.php");
     exit;
@@ -12,6 +12,14 @@ if (!isset($_SESSION['id_user'])) {
 $id_user = $_SESSION['id_user'];
 $query = mysqli_query($conn, "SELECT * FROM user WHERE id_user = '$id_user'");
 $user = mysqli_fetch_assoc($query);
+
+// Jika data user tidak ditemukan di database (misal data terhapus), paksa logout
+if (!$user) {
+    session_unset();
+    session_destroy();
+    header("Location: login.php");
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +76,7 @@ $user = mysqli_fetch_assoc($query);
     <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center fw-bold text-decoration-none" href="index.php" style="color: #1E3A8A;">
-                <i class="bi bi-water me-2 fs-3 text-primary"></i> Sharky Villa
+            <img src="pict/pinkie.jpg" alt="Logo Sharky Villa" width="40" height="40" class="me-2"> Sharky Villa
             </a>
             <div class="d-flex align-items-center">
                 <a href="index.php" class="btn btn-outline-primary btn-sm rounded-pill px-3">Kembali ke Beranda</a>
@@ -95,9 +103,14 @@ $user = mysqli_fetch_assoc($query);
                         <div class="fs-5 fw-bold text-dark"><?= htmlspecialchars($user['nama']); ?></div>
                     </div>
 
-                    <div class="mb-4 p-3 bg-light rounded-3">
+                    <div class="mb-3 p-3 bg-light rounded-3">
                         <label class="form-label text-muted small fw-semibold mb-1">Email</label>
                         <div class="fs-5 fw-semibold text-dark"><?= htmlspecialchars($user['email']); ?></div>
+                    </div>
+
+                    <div class="mb-4 p-3 bg-light rounded-3">
+                        <label class="form-label text-muted small fw-semibold mb-1">Nomor HP / WhatsApp</label>
+                        <div class="fs-5 fw-semibold text-dark"><?= htmlspecialchars($user['no_hp']); ?></div>
                     </div>
 
                     <div class="d-grid gap-2">

@@ -1,15 +1,18 @@
 <?php
+// Pastikan session sudah aktif
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-include 'koneksi.php';
+
+// Mendeteksi nama file halaman yang sedang dibuka saat ini
+$current_page = basename($_SERVER['PHP_SELF']);
 ?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sharky Villa - Liburan Impian Anda</title>
+    <title>Sharky Villa</title>
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts: Poppins -->
@@ -20,10 +23,9 @@ include 'koneksi.php';
     <style>
         :root {
             --bg-blue: #D6EFFF;
-            --navbar-blue: #BCE2FF;
             --pink-accent: #FFB7C5;
             --pink-hover: #FF9EAA;
-            --text-dark: #334E68;
+            --text-dark: #0F172A;
             --card-bg: #FFFFFF;
         }
 
@@ -31,24 +33,32 @@ include 'koneksi.php';
             font-family: 'Poppins', sans-serif;
             background-color: var(--bg-blue);
             color: var(--text-dark);
-        }
-
-        .navbar-custom {
-            background-color: var(--navbar-blue);
-            padding: 12px 0;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .navbar-brand {
+            color: var(--text-dark) !important;
             font-weight: 700;
-            color: #1E3A8A !important;
-            font-size: 1.5rem;
         }
 
+        /* Warna default link navbar */
         .nav-link {
-            color: var(--text-dark) !important;
+            color: #475569 !important;
             font-weight: 500;
-            margin: 0 8px;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: #2563EB !important;
+        }
+
+        /* Kelas aktif: Biru tua pekat dan tebal khusus untuk menu yang sedang dibuka */
+        .nav-link.active-menu {
+            color: var(--text-dark) !important;
+            font-weight: 700;
         }
 
         .btn-pink {
@@ -56,7 +66,7 @@ include 'koneksi.php';
             color: #ffffff;
             font-weight: 600;
             border-radius: 20px;
-            padding: 6px 20px;
+            padding: 8px 20px;
             border: none;
             transition: all 0.3s ease;
         }
@@ -69,34 +79,32 @@ include 'koneksi.php';
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-custom">
+    <!-- NAVBAR UTAMA -->
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
         <div class="container">
-           <a class="navbar-brand d-flex align-items-center text-decoration-none" href="index.php">
-             <img src="pict/ping.png" alt="Logo Sharky Villa" width="40" height="40" class="me-2 rounded-circle object-fit-cover"> 
-             <span class="fw-bold" style="color: #1E3A8A;">Sharky Villa</span>
+            <a class="navbar-brand d-flex align-items-center text-decoration-none" href="index.php">
+                <i class="bi bi-water me-2 fs-3 text-primary"></i> Sharky Villa
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link fw-bold" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="villa.php">Villa</a></li>
-                    <li class="nav-item"><a class="nav-link" href="riwayat.php">Riwayat Pemesanan</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Tentang Kami</a></li>
-                </ul>
-                <div class="d-flex align-items-center">
-                    <?php 
-                    if (isset($_SESSION['nama'])) {
-                        echo '<a href="profil.php" class="me-3 text-decoration-none fw-semibold text-dark">';
-                        echo '<i class="bi bi-person-circle fs-4 me-1 align-middle"></i> ' . htmlspecialchars($_SESSION['nama']);
-                        echo '</a>';
-                        echo '<a href="logout.php" class="btn btn-outline-danger btn-sm rounded-pill">Logout</a>';
-                    } else {
-                        echo '<i class="bi bi-person-circle fs-4 me-2 text-secondary"></i>';
-                        echo '<a href="login.php" class="btn btn-pink">Login / Daftar</a>';
-                    }
-                    ?>
+                <li class="nav-item">
+                    <a class="nav-link <?= ($current_page == 'index.php') ? 'active-menu' : ''; ?>" href="index.php">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= ($current_page == 'descVilla.php') ? 'active-menu' : ''; ?>" href="descVilla.php">Villa</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?= ($current_page == 'riwayatPemesanan.php') ? 'active-menu' : ''; ?>" href="riwayatPemesanan.php">Riwayat Pemesanan</a>
+                </li>
+            </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <a href="profile.php" class="text-decoration-none text-dark fw-semibold d-flex align-items-center">
+                        <i class="bi bi-person-circle fs-5 me-1"></i> <?= htmlspecialchars($_SESSION['nama'] ?? 'Akun'); ?>
+                    </a>
+                    <a href="logout.php" class="btn btn-outline-danger btn-sm rounded-pill px-3">Logout</a>
                 </div>
             </div>
         </div>
