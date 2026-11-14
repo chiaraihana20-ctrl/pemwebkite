@@ -90,21 +90,30 @@ $current_page = basename($_SERVER['PHP_SELF']);
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link <?= ($current_page == 'index.php') ? 'active-menu' : ''; ?>" href="index.php">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= ($current_page == 'descVilla.php') ? 'active-menu' : ''; ?>" href="descVilla.php">Villa</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link <?= ($current_page == 'riwayatPemesanan.php') ? 'active-menu' : ''; ?>" href="riwayatPemesanan.php">Riwayat Pemesanan</a>
-                </li>
-            </ul>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($current_page == 'index.php') ? 'active-menu' : ''; ?>" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($current_page == 'descVilla.php') ? 'active-menu' : ''; ?>" href="descVilla.php">Villa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?= ($current_page == 'riwayatPemesanan.php') ? 'active-menu' : ''; ?>" href="riwayatPemesanan.php">Riwayat Pemesanan</a>
+                    </li>
+                </ul>
+
+                <!-- BAGIAN KANAN NAVBAR (SESSION HANDLING) -->
                 <div class="d-flex align-items-center gap-3">
-                    <a href="profile.php" class="text-decoration-none text-dark fw-semibold d-flex align-items-center">
-                        <i class="bi bi-person-circle fs-5 me-1"></i> <?= htmlspecialchars($_SESSION['nama'] ?? 'Akun'); ?>
-                    </a>
-                    <a href="logout.php" class="btn btn-outline-danger btn-sm rounded-pill px-3">Logout</a>
+                    <?php if (isset($_SESSION['id_user'])): ?>
+                        <!-- Jika user SUDAH login -->
+                        <a href="profil.php" class="text-decoration-none text-dark fw-semibold d-flex align-items-center">
+                            <i class="bi bi-person-circle fs-5 me-1"></i> <?= htmlspecialchars($_SESSION['nama'] ?? 'Akun'); ?>
+                        </a>
+                        <a href="logout.php" class="btn btn-outline-danger btn-sm rounded-pill px-3">Logout</a>
+                    <?php else: ?>
+                        <!-- Jika user BELUM login -->
+                        <a href="login.php" class="text-decoration-none text-dark fw-semibold">Login</a>
+                        <a href="register.php" class="btn btn-pink btn-sm rounded-pill px-3">Register</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

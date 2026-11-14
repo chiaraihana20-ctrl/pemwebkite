@@ -1,18 +1,12 @@
 <?php
 session_start();
-include 'koneksi.php'; // WAJIB di paling atas agar $conn aktif
+include 'koneksi.php'; // Koneksi database untuk mengambil daftar villa
 
-// Cek apakah user sudah login
-if (!isset($_SESSION['id_user'])) {
-    header("Location: login.php");
-    exit;
-}
-
-// Query mengambil data villa dari database
+// Query mengambil data villa terpopuler dari database
 $query_villa = "SELECT * FROM villa LIMIT 4";
 $result_villa = mysqli_query($conn, $query_villa);
 
-// Panggil header setelah sesi dan koneksi siap
+// Panggil header (navbar otomatis menyesuaikan status login/tamu)
 include 'header.php';
 ?>
 
@@ -32,7 +26,7 @@ include 'header.php';
                 <div class="row g-3 align-items-end">
                     <div class="col-md-3">
                         <label class="form-label fw-semibold small mb-1">Lokasi</label>
-                        <input type="text" name="lokasi" class="form-control" placeholder="Kuta, Bali / Jogja">
+                        <input type="text" name="lokasi" class="form-control" placeholder="Gunung Kidul">
                     </div>
                     <div class="col-md-3">
                         <label class="form-label fw-semibold small mb-1">Check-in</label>
