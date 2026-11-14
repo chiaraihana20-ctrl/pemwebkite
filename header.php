@@ -75,6 +75,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
             background-color: var(--pink-hover);
             color: #ffffff;
         }
+
+        .logo-navbar {
+            height: 36px;
+            width: auto;
+            object-fit: contain;
+        }
     </style>
 </head>
 <body>
@@ -82,8 +88,8 @@ $current_page = basename($_SERVER['PHP_SELF']);
     <!-- NAVBAR UTAMA -->
     <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center text-decoration-none" href="index.php">
-                <i class="bi bi-water me-2 fs-3 text-primary"></i> Sharky Villa
+           <a class="navbar-brand d-flex align-items-center text-decoration-none" href="index.php">
+            <img src="pict/pinkie.jpg" alt="Logo Sharky Villa" class="logo-navbar me-2"> Sharky Villa
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>

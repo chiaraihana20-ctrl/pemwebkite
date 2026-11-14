@@ -61,7 +61,7 @@ include 'header.php';
                     
                     <!-- FOTO VILLA -->
                     <div class="col-lg-5 text-center p-4 bg-light">
-                        <img src="http://localhost/projek2/pict/<?php echo htmlspecialchars($data['gambar']); ?>" 
+                        <img src="http://localhost/projek/pict/<?php echo htmlspecialchars($data['gambar']); ?>" 
                              class="img-fluid rounded-3 shadow-sm" 
                              style="max-height: 380px; width: 100%; object-fit: cover;" 
                              alt="Foto Villa">
@@ -107,7 +107,7 @@ include 'header.php';
                                 <h6 class="fw-bold text-dark mb-1">
                                     <i class="bi bi-door-open-fill text-primary me-1"></i> Jumlah Kamar
                                 </h6>
-                                <p class="text-muted mb-0"><?php echo htmlspecialchars($data['jumlah_kamar']); ?> Kamar</p>
+                                <p class="text-muted mb-0"><?php echo htmlspecialchars($data['jumlah_kamar']); ?>dur</p>
                             </div>
                         </div>
 
