@@ -38,7 +38,7 @@ include 'header.php';
                     <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
                         <div class="row align-items-center">
                             <div class="col-md-3 mb-3 mb-md-0">
-                                <img src="img/<?= htmlspecialchars($row['gambar']); ?>" alt="Foto Villa" class="img-fluid rounded-4 object-fit-cover" style="height: 140px; width: 100%;">
+                                <img src="pict/<?= htmlspecialchars($row['gambar']); ?>" alt="Foto Villa" class="img-fluid rounded-4 object-fit-cover" style="height: 140px; width: 100%;">
                             </div>
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <h4 class="fw-bold text-dark mb-1"><?= htmlspecialchars($row['nama_villa']); ?></h4>
